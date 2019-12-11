@@ -19,7 +19,7 @@ class SessionController {
       return res.status(401).json({ error: 'Senha não confere' });
     }
 
-    const { id, nome } = user;
+    const { id, nome, admin } = user;
 
     // eslint-disable-next-line no-console
     // console.log(process.env.JWT_SECRET_TOKEN);
@@ -29,8 +29,8 @@ class SessionController {
         id,
         nome,
         login,
+        admin,
       },
-
       token: jwt.sign({ id }, process.env.JWT_SECRET_TOKEN, {
         expiresIn: process.env.JWT_EXPIRES_IN,
       }),

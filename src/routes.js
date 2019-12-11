@@ -8,6 +8,7 @@ import AdminController from './app/controllers/AdminController';
 
 import authMiddleware from './app/middlewares/auth';
 import FileController from './app/controllers/FileController';
+import RelatorioController from './app/controllers/RelatorioController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -19,6 +20,8 @@ routes.use(authMiddleware);
 
 routes.put('/users', UserController.update);
 routes.get('/admins', AdminController.index);
+routes.post('/relatorios', RelatorioController.store);
+routes.get('/relatorios', RelatorioController.index);
 
 routes.post('/files', upload.single('file'), FileController.store);
 
