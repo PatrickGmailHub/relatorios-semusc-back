@@ -18,10 +18,16 @@ class RelatorioController {
   }
 
   async index(req, res) {
-    const relatorios = await Relatorio.find().lean();
+    const relatorios = await Relatorio.find();
     // const relatorios = await Relatorio.find({}).lean();
 
     return res.json(relatorios);
+  }
+
+  async getById(req, res) {
+    const relatorio = await Relatorio.find({ id: req.query.id });
+
+    return res.json(relatorio);
   }
 }
 

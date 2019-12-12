@@ -34,6 +34,9 @@ const RelatorioSchema = new mongoose.Schema({
   hr_local: {
     type: Date,
   },
+  plVTR: {
+    type: String,
+  },
   local: {
     type: String,
   },
@@ -44,7 +47,7 @@ const RelatorioSchema = new mongoose.Schema({
     type: String,
   },
   termino_atd: {
-    type: Date,
+    type: String,
   },
   num_ocorrencia: {
     type: String,
@@ -79,6 +82,14 @@ const RelatorioSchema = new mongoose.Schema({
   },
 }, {
   timestamps: true,
+  toJSON: {
+    transform: (document, ret) => {
+      const relatorio = { id: ret._id, ...ret };
+      delete relatorio._id;
+      delete relatorio.__v;
+      return relatorio;
+    },
+  },
 });
 
 export default mongoose.model('Relatorio', RelatorioSchema);

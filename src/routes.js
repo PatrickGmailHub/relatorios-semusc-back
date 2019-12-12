@@ -13,15 +13,21 @@ import RelatorioController from './app/controllers/RelatorioController';
 const routes = new Router();
 const upload = multer(multerConfig);
 
-routes.post('/users', UserController.store);
+// routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
 
 routes.use(authMiddleware);
 
+routes.post('/users', UserController.store);
+routes.get('/users', UserController.index);
+routes.get('/users/:id', UserController.getId);
 routes.put('/users', UserController.update);
-routes.get('/admins', AdminController.index);
+routes.delete('/users/:id', UserController.delete);
+
 routes.post('/relatorios', RelatorioController.store);
 routes.get('/relatorios', RelatorioController.index);
+
+routes.get('/admins', AdminController.index);
 
 routes.post('/files', upload.single('file'), FileController.store);
 
