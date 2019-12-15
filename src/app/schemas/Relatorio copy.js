@@ -1,5 +1,25 @@
 import mongoose from 'mongoose';
 
+/* const envolvidoSchema = new mongoose.Schema(
+  {
+    envolvido: {
+      type: String,
+    },
+    nome: {
+      type: String,
+    },
+    end: {
+      type: String,
+    },
+    bairro: { type: String },
+    cidade: { type: String },
+    profissao: { type: String },
+    documentacao: { type: String },
+    dt_nasc: { type: Date },
+    idade_aparente: { type: Number },
+  },
+); */
+
 const RelatorioSchema = new mongoose.Schema({
   user: {
     type: Number,
@@ -27,7 +47,7 @@ const RelatorioSchema = new mongoose.Schema({
     type: String,
   },
   bairro: {
-    type: String,
+    typr: String,
   },
   pt_referencia: {
     type: String,
@@ -41,9 +61,21 @@ const RelatorioSchema = new mongoose.Schema({
   tipo_ocorrencia: {
     type: String,
   },
-  tipo_atendimento: {
-    type: String,
-  },
+  // envolvidos: {
+  //   envolvido: [envolvidoSchema],
+  // },
+  /* envolvidos: [{
+    envolvido: String,
+    nome: String,
+    endereco: String,
+    bairro: String,
+    cidade: String,
+    profissao: String,
+    documentacao: String,
+    dt_nasc: Date,
+    idade_aparente: Number,
+  }], */
+  // envolvidos: [{}],
   envolvidos: {
     type: Array,
     default: [],

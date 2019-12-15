@@ -25,7 +25,7 @@ class RelatorioController {
   }
 
   async getById(req, res) {
-    const relatorio = await Relatorio.find({ id: req.query.id });
+    const relatorio = await Relatorio.findById(req.params.id);
 
     return res.json(relatorio);
   }
