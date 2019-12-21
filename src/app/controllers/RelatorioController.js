@@ -29,6 +29,18 @@ class RelatorioController {
 
     return res.json(relatorio);
   }
+
+  async update(req, res) {
+    const relUpdate = await Relatorio.findByIdAndUpdate(req.params.id, req.body);
+
+    return res.json(relUpdate);
+  }
+
+  async delete(req, res) {
+    await Relatorio.findByIdAndRemove(req.params.id);
+
+    return res.send();
+  }
 }
 
 export default new RelatorioController();
