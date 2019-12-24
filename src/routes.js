@@ -26,6 +26,7 @@ routes.delete('/users/:id', UserController.delete);
 
 routes.post('/relatorios', RelatorioController.store);
 routes.get('/relatorios', RelatorioController.index);
+routes.get('/relatorios-user-id/', RelatorioController.indexUserId);
 routes.get('/relatorios/:id', RelatorioController.getById);
 routes.put('/relatorios/:id', RelatorioController.update);
 routes.delete('/relatorios/:id', RelatorioController.delete);

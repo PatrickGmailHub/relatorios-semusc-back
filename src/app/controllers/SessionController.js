@@ -31,7 +31,7 @@ class SessionController {
         login,
         admin,
       },
-      token: jwt.sign({ id }, process.env.JWT_SECRET_TOKEN, {
+      token: jwt.sign({ id, admin }, process.env.JWT_SECRET_TOKEN, {
         expiresIn: process.env.JWT_EXPIRES_IN,
       }),
     });

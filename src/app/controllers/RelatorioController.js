@@ -4,11 +4,17 @@ import Relatorio from '../schemas/Relatorio';
 class RelatorioController {
   async store(req, res) {
     const { userId } = req;
+    const { id } = req;
+
+    console.log(`userId: ${userId}`);
+    console.log(`id: ${id}`);
 
     // req.body.user = userId;
 
     const relatorio = req.body;
     relatorio.user = userId;
+
+    console.log(relatorio);
 
     await Relatorio.create(
       relatorio,
@@ -19,6 +25,13 @@ class RelatorioController {
 
   async index(req, res) {
     const relatorios = await Relatorio.find();
+    // const relatorios = await Relatorio.find({}).lean();
+
+    return res.json(relatorios);
+  }
+
+  async indexUserId(req, res) {
+    const relatorios = await Relatorio.find({ user: req.userId });
     // const relatorios = await Relatorio.find({}).lean();
 
     return res.json(relatorios);
