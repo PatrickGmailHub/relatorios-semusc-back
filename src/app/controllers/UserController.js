@@ -28,7 +28,8 @@ class UserController {
   }
 
   async delete(req, res) {
-
+    const { id } = req.params;
+    await User.destroy({ where: { id } });
   }
 }
 
